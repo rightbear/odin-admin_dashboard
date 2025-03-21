@@ -1,2 +1,4 @@
 # odin-admin_dashboard
-Practice of "Project: Admin Dashboard" in The Odin Project
+Project: Admin Dashboard
+
+This is the seventh project to work in the "Intermediate HTML and CSS Course"
