@@ -48,8 +48,8 @@ body {
     align-items: center;
 
     padding: calc(10px + 0.5vw);
-    font-size: 2vw;
-    font-weight: 550;
+    font-size: calc(1rem + 0.7vw);
+    font-weight: 600;
 }
 
 .title img {
@@ -59,12 +59,12 @@ body {
 }
 
 .navigation, .branding {
-    /*position style can not be inheritanced in children*/
+    /* position style can not be inheritanced in children */
     padding-left: calc(17px + 0.5vw);
 
-    /*font style can be inheritanced in children*/
-    font-size: 1.5vw;
-    font-weight: 550;
+    /* font style can be inheritanced in children */
+    font-size: calc(0.75rem + 0.5vw);
+    font-weight: 600;
 }
 
 .navigation {
@@ -114,7 +114,9 @@ body {
         "searchbar searchbar notification"
         "account account action";
 
-    box-shadow: 2px 2px 5px gray;
+    /* set position: relative; for that area with shadow in the grid */
+    box-shadow: 0px 2px 5px gray;
+    position: relative;
 }
 
 .header .searchbar {
@@ -137,7 +139,7 @@ body {
     padding: 6px;
     border: none;
     border-radius: 16px;
-    background: Gainsboro;
+    background: #F0F0F0;
     height: 2.5vh;
     width: 45vw
 }
@@ -151,7 +153,7 @@ body {
     justify-content: end;
     padding-right: 2rem;
 
-    font-size: 1.5vw;
+    font-size: calc(0.75rem + 0.5vw);
 }
 
 .notification img:nth-of-type(1) {
@@ -162,13 +164,13 @@ body {
 
 .notification img:nth-of-type(2) {
     margin-right: 1.5vw;
-    height: 3.5vh;
+    height: 4vh;
     border-radius: 50%;
 }
 
 .notification span {
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.calc(0.75rem + 0.5vw);
 }
 
 .header .account {
@@ -187,16 +189,16 @@ body {
     border-radius: 50%;
 }
 
-.account .information {
+.account .account-info {
     font-weight: bold;
 }
 
-.account .information .welcome{
-    font-size: 1vw;
+.account .account-info .welcome{
+    font-size: calc(0.5rem + 0.35vw);
 }
 
-.account .information .big-name{
-    font-size: 1.75vw;
+.account .account-info .big-name{
+    font-size: calc(0.9rem + 0.6vw);
 }
 
 .header .action {
@@ -211,14 +213,15 @@ body {
 }
 
 .action button {
-    width: 8vw;
+    width: 9vw;
     padding: 10px 0px;
     border: none;
     border-radius: 16px;
     background-color: var(--color-with-theme);
     color:white;
 
-    font-size: 1.25vw;
+    font-size: calc(0.6rem + 0.4vw);
+    cursor: pointer;
 }
 
 /*************************************/
@@ -226,4 +229,176 @@ body {
 .dashboard {
     grid-column: 2 / -1;
     grid-row: 2 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+        "projects projects projects announcements"
+        "projects projects projects trending";
+
+    padding: 1rem;
+    gap: 15px;
+    background-color: #DCDCDC;
+}
+
+.dashboard .dashboard-func {
+    font-size: calc(0.75rem + 0.5vw);
+    font-weight: 600;
+}
+
+.dashboard .projects {
+    grid-area: projects;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.projects .item-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* use oerflow to make project grids visible when shrinked too much */
+    overflow: auto;
+
+    gap: 15px;
+    padding-top: 10px;
+    /* padding-bottom prevents box-shadow in .padding-bottom disappear */
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+.item-container .project-item {
+    display: flex;
+    flex-direction: column;
+    height: 22vh;
+    padding: 15px;
+
+    /* relative attribute in project-item can make 
+    logo part use absolute attribute to position */
+    position: relative;
+
+    background-color: white;
+    border-radius: 5px;
+    border-left: 5px orange solid ;
+    box-shadow: 0px 2px 5px gray;
+}
+
+.project-item .item-title {
+    font-size: calc(0.6rem + 0.4vw);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.project-item .item-content {
+    font-size: calc(0.5rem + 0.32vw);
+    color: gray;
+}
+
+.project-item .project-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: end;
+}
+
+.project-icon img {
+    margin-right: 1.5vw;
+    height: 2.5vh;
+    width: 1.5vw;
+}
+
+.dashboard .announcements {
+    grid-area: announcements;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.announcements .announcement-container {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px gray;
+}
+
+.announcement-container .announcement-item {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 0px;
+    border-bottom: 2px lightgrey solid ;
+
+    min-height: 0;
+    overflow: hidden;
+}
+
+.announcement-container .announcement-item:last-of-type {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 0px;
+    border-bottom: 0px;
+}
+
+.announcement-item .announcement-title {
+    font-size: calc(0.5rem + 0.35vw);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.announcement-item .announcement-content {
+    font-size: calc(0.4rem + 0.28vw);
+    color: gray;
+}
+
+.dashboard .trending {
+    grid-area: trending;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.trending .trending-users {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px gray;
+    gap: 23px;
+}
+
+.trending-users .trending-user {
+    display: flex;
+    flex-direction: row;
+}
+
+.trending-user img {
+    margin-right: 1.5vw;
+    height: 4vh;
+    border-radius: 50%;
+}
+
+.trending-user .user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info .user-id {
+    font-size: calc(0.45rem + 0.31vw);
+    margin-bottom: 2px;
+}
+
+.user-info .project-name {
+    font-size: calc(0.5rem + 0.35vw);
+    color: gray;
 }
