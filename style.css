@@ -85,12 +85,12 @@ body {
     margin-bottom: 3rem;
 }
 
-.navigation > *,
-.branding > *{
+.icon-func{
     display: flex;
     flex-direction: row;
-
     align-items: center;
+    
+    cursor: pointer;
 }
 
 .navigation img,
@@ -141,7 +141,7 @@ body {
     border-radius: 16px;
     background: #F0F0F0;
     height: 2.5vh;
-    width: 45vw
+    width: 42vw
 }
 
 .header .notification {
@@ -160,6 +160,7 @@ body {
     margin-right: 1.5vw;
     height: 3vh;
     width: 1.8vw;
+    cursor: pointer;
 }
 
 .notification img:nth-of-type(2) {
@@ -213,7 +214,7 @@ body {
 }
 
 .action button {
-    width: 9vw;
+    width: 8vw;
     padding: 10px 0px;
     border: none;
     border-radius: 16px;
@@ -323,6 +324,10 @@ body {
     display: flex;
     flex-direction: column;
 
+    /* use max-height and overflow to make container grid visible when shrinked too much */
+    max-height: 32vh;
+    overflow: auto;
+
     background-color: white;
     margin-top: 10px;
     padding: 20px;
@@ -337,7 +342,6 @@ body {
     border-bottom: 2px lightgrey solid ;
 
     min-height: 0;
-    overflow: hidden;
 }
 
 .announcement-container .announcement-item:last-of-type {
@@ -354,6 +358,11 @@ body {
 }
 
 .announcement-item .announcement-content {
+
+    /* use max-height and overflow to make contents visible when shrinked too much */
+    max-height: 8vh;
+    overflow: auto;
+
     font-size: calc(0.4rem + 0.28vw);
     color: gray;
 }
@@ -368,6 +377,10 @@ body {
 .trending .trending-users {
     display: flex;
     flex-direction: column;
+
+    /* use max-height and oerflow to make container grid visible when shrinked too much */
+    max-height: 32vh;
+    overflow: auto;
 
     background-color: white;
     margin-top: 15px;
